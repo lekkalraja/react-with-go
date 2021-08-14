@@ -14,11 +14,9 @@ class Content extends Component {
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then(response => response.json())
             .then(jsonData => {
-                this.setState(() =>  {
-                    return {
+                this.setState({
                         posts: jsonData
-                    }
-                });
+                    });
             });
     }
 
