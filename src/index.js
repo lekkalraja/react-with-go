@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import Footer from './Footer'
+// import Footer from './Footer'
 import Content from './Content'
 import Header from './Header'
 import DisplayPosts from './DisplayPosts'
-
+import FooterFunctionalComponent from './FooterFunctionalComponent'
 import './css/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -34,7 +34,8 @@ class App extends Component {
                 <Header title="My Awesome App" />
                 <Content { ...author } handlePosts= {this.handlePosts}/>
                 <DisplayPosts posts= {this.state.posts} />
-                <Footer />
+                {/* <Footer /> */}
+                <FooterFunctionalComponent company="ajar.com"/>
             </div>
         )
     }
