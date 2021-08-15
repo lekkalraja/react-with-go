@@ -2,13 +2,22 @@ import React, { Component, Fragment } from 'react';
 
 class Content extends Component {
 
-   state = {
-       posts: []
-   }
 
-   clickedItem = item => {
-       console.log(item)
-   }
+    constructor(props) {
+        super(props)
+        this.state = {
+            posts: []
+        }
+        this.handlePosts = this.handlePosts.bind(this)
+    }
+
+    handlePosts(posts) {
+        this.props.handlePosts(posts)
+    }
+
+    clickedItem = item => {
+        console.log(item)
+    }
 
     fetchData = () => {
         fetch('https://jsonplaceholder.typicode.com/posts')
@@ -17,6 +26,7 @@ class Content extends Component {
                 this.setState({
                         posts: jsonData
                     });
+                this.handlePosts(jsonData)
             });
     }
 
@@ -30,18 +40,6 @@ class Content extends Component {
                 <button type="button" onClick= {this.fetchData} className="btn btn-info">Fetch Posts</button>
                 <br /><br />
                 <p className="badge bg-primary text-wrap"> Posts are { this.state.posts.length } Items long</p>.
-
-                <ul id="posts-list">
-                    {
-                        this.state.posts.map(item => {
-                            return <li key={item.id}>
-                                <a href="#!" onClick={this.clickedItem}>
-                                    {item.title}
-                                </a>
-                            </li>
-                        })
-                    }
-                </ul>
             </Fragment>
         )
     }
